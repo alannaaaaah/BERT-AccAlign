@@ -1,0 +1,9 @@
+# unsupervised setting
+
+    UN_OUTDIR=../out/unsupervised/
+    SEED=42
+    DATA=mtref
+    OT=uot
+    WT=uniform
+    DT=cos
+    $ CUDA_VISIBLE_DEVICES=${NUM} python3 unsupervised_alignment.py --data edinburgh --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type uot --weight_type uniform --dist_type cos --seed 42
