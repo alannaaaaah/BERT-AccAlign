@@ -1,4 +1,0 @@
-transformers
-tokenizers
-tensorboard
-POT
