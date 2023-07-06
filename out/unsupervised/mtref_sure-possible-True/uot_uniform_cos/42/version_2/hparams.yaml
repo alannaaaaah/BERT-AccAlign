@@ -1,0 +1,9 @@
+ot_type: uot
+sinkhorn: True
+epsilon: 0.1
+chimera: True
+dist_type: cos
+weight_type: uniform
+div_type: --
+tau: 0.9803921568627451
+threshold: 0.23232323232323235

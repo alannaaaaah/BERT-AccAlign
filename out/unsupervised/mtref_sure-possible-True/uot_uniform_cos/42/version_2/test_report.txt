@@ -1,0 +1,13 @@
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+87.93075	77.80258	82.55719	2.62500
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+47.78788	63.30482	54.46268	5.50000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+77.20321	75.97170	76.58250	2.62500
