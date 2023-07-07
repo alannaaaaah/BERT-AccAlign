@@ -1,0 +1,13 @@
+Task: edinburgh dev
+Precision	Recall	F1	ExactMatch
+90.85631	84.50845	87.56749	12.50000
+*******************
+Task [NULL]: edinburgh dev
+Null ratio (corpus): 0.9250
+Null ratio (sentence): 0.2370
+Precision	Recall	F1	ExactMatch
+70.03985	75.27100	72.56127	12.50000
+*******************
+Task [Total]: edinburgh dev
+Precision	Recall	F1	ExactMatch
+83.44830	81.98253	82.70892	12.50000

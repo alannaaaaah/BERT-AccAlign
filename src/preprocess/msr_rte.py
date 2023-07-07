@@ -53,10 +53,10 @@ def select_from_list(input_list, indices):
 
 
 if __name__ == '__main__':
-    # corpus_dir = '../data/RTE-2006-Aligned/Test/'
-    # sure_and_possible = True
-    # out_path = '../data/RTE-2006-Aligned/sure-and-possible_'
-    corpus_dir = '../../data/RTE-2006-Aligned/Test/'
+    #corpus_dir = '../data/RTE-2006-Aligned/Test/'
+    #sure_and_possible = True
+    #out_path = '../data/RTE-2006-Aligned/sure-and-possible_'
+    corpus_dir = '../../data/RTE-2006-Aligned/Dev/'
     sure_and_possible = False
     out_path = '../data/RTE-2006-Aligned/sure_'
 
