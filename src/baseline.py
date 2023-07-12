@@ -176,3 +176,46 @@ class Aligner:
             fw.write('div_type: {0}\n'.format(self.div_type))
             fw.write('tau: {0}\n'.format(self.tau))
             fw.write('threshold: {0}\n'.format(self.thresh))
+
+class AccAligner:
+    def __init__(self, dist_type, weight_type, distortion, thresh, tau, outdir, **kwargs):
+        self.dist_type = dist_type
+        self.weight_type = weight_type
+        self.distotion = distortion
+        self.thresh = thresh
+        self.tau = tau
+        self.epsilon = 0.1
+        self.stopThr = 1e-6
+        self.numItermax = 1000
+        self.outdir = outdir
+        self.div_type = kwargs['div_type']
+        self.save_hyper_parameters()
+
+        self.dist_func = compute_distance_matrix_cosine if dist_type == 'cos' else compute_distance_matrix_l2
+        if weight_type == 'uniform':
+            self.weight_func = compute_weights_uniform
+        else:
+            self.weight_func = compute_weights_norm
+    
+    def compute_align_matrix(self, s1_vecs, s2_vecs):
+        self.align_matrixes = []
+        for vecX, vecY in zip(s1_vecs, s2_vecs):
+            S_XY = self.compute_similarity_matrix(vecX, vecY)
+            S_YX = self.compute_similarity_matrix(vecY, vecX)
+            A
+            if torch.is_tensor(A):
+                A = A.to('cpu').numpy()
+
+            self.align_matrixes.append(A)
+
+    def compute_similarity_matrix(self, vecX, vecY):
+        s1_word_embeddigs = vecX.to(torch.float64)
+        s2_word_embeddigs = vecY.to(torch.float64)
+
+        C = self.dist_func(s1_word_embeddigs, s2_word_embeddigs, self.distotion)
+        s1_weights, s2_weights = self.weight_func(s1_word_embeddigs, s2_word_embeddigs)
+
+        # S = s1_embeddings * s2_embeddings.T
+        assert s1_word_embeddigs.type == map(list, zip(*s2_word_embeddigs)).type
+        S = s1_word_embeddigs * map(list, zip(*s2_word_embeddigs)) 
+        

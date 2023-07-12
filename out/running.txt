@@ -10,5 +10,4 @@
 CUDA_VISIBLE_DEVICES=2 python3 unsupervised_alignment.py --data msr --sure_and_possible --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type uot --weight_type uniform --dist_type cos --seed 42 --sinkhorn --chimera
 CUDA_VISIBLE_DEVICES=2 python3 unsupervised_alignment.py --data msr --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type uot --weight_type uniform --dist_type cos --seed 42 --sinkhorn --chimera
 
-CUDA_VISIBLE_DEVICES=2 python3 unsupervised_alignment.py --data msr --sure_and_possible --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type bot --weight_type uniform --dist_type cos --seed 42 --sinkhorn --chimera
-CUDA_VISIBLE_DEVICES=2 python3 unsupervised_alignment.py --data msr --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type bot --weight_type uniform --dist_type cos --seed 42 --sinkhorn --chimera
+CUDA_VISIBLE_DEVICES=2 python3 unsupervised_alignment.py --data edinburgh --model bert-base-cased --centering --pair_encode --layer -3 --out ../out/unsupervised/ --ot_type uot --weight_type uniform --dist_type cos --seed 42 --sinkhorn --chimera
