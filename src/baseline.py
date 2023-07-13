@@ -2,6 +2,7 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import ot
+import tensorflow as tf
 from util import *
 from model_parts import *
 
@@ -188,7 +189,6 @@ class AccAligner:
         self.stopThr = 1e-6
         self.numItermax = 1000
         self.outdir = outdir
-        self.div_type = kwargs['div_type']
         self.save_hyper_parameters()
 
         self.dist_func = compute_distance_matrix_cosine if dist_type == 'cos' else compute_distance_matrix_l2
@@ -197,12 +197,13 @@ class AccAligner:
         else:
             self.weight_func = compute_weights_norm
     
-    def compute_align_matrix(self, s1_vecs, s2_vecs):
+    def compute_alignment_matrixes(self, s1_vecs, s2_vecs, thresh):
         self.align_matrixes = []
         for vecX, vecY in zip(s1_vecs, s2_vecs):
             S_XY = self.compute_similarity_matrix(vecX, vecY)
             S_YX = self.compute_similarity_matrix(vecY, vecX)
-            A
+            A = (S_XY > thresh) * (tf.transpose(S_YX, perm=None, conjugate=False, name='transpose')  > thresh)
+
             if torch.is_tensor(A):
                 A = A.to('cpu').numpy()
 
@@ -212,10 +213,25 @@ class AccAligner:
         s1_word_embeddigs = vecX.to(torch.float64)
         s2_word_embeddigs = vecY.to(torch.float64)
 
-        C = self.dist_func(s1_word_embeddigs, s2_word_embeddigs, self.distotion)
-        s1_weights, s2_weights = self.weight_func(s1_word_embeddigs, s2_word_embeddigs)
-
         # S = s1_embeddings * s2_embeddings.T
-        assert s1_word_embeddigs.type == map(list, zip(*s2_word_embeddigs)).type
-        S = s1_word_embeddigs * map(list, zip(*s2_word_embeddigs)) 
+        print(s1_word_embeddigs.type)
+        print(s1_word_embeddigs)
+        S = s1_word_embeddigs * tf.transpose(s2_word_embeddigs, perm=None, conjugate=False, name='transpose')
+        S = S.normalize()
+        return S
+    
+    def normalize(self):
+        min = self.min(axis=0)
+        max = self.max(axis=0)
+        X_std = (self - min) / (max - min)
+        X_scaled = X_std * (max - min) + min
+        return X_scaled
+    
+    def save_hyper_parameters(self):
+        with open(self.outdir + 'hparams.yaml', 'w') as fw:
+            fw.write('epsilon: {0}\n'.format(self.epsilon))
+            fw.write('dist_type: {0}\n'.format(self.dist_type))
+            fw.write('weight_type: {0}\n'.format(self.weight_type))
+            fw.write('tau: {0}\n'.format(self.tau))
+            fw.write('threshold: {0}\n'.format(self.thresh))
         

@@ -14,12 +14,12 @@ parser.add_argument('--data', default='mtref', type=str,
 parser.add_argument('--sure_and_possible', action='store_true')
 parser.add_argument('--out', default='../out/self-supervised/', type=str, required=True)
 parser.add_argument('--model', default='bert-base-cased', type=str)
-#parser.add_argument('--ot_type', default='OT type', type=str, required=True, nargs='*')
+# parser.add_argument('--ot_type', default='OT type', type=str, required=True, nargs='*')
 parser.add_argument('--weight_type', help='Weight type', type=str, choices=['norm', 'uniform', '--'], default='--')
-#parser.add_argument('--dist_type', help='Distance metric', type=str, choices=['cos', 'l2'], required=True)
-#parser.add_argument('--sinkhorn', help='Use sinkhorn', action='store_true')
-#parser.add_argument('--div_type', help='uot_mm divergence', type=str, default='--', choices=['kl', 'l2', '--'])
-#parser.add_argument('--chimera', help='Use BERTScore for parameter estimation', action='store_true')
+parser.add_argument('--dist_type', help='Distance metric', type=str, choices=['cos', 'l2'], required=True)
+# parser.add_argument('--sinkhorn', help='Use sinkhorn', action='store_true')
+# parser.add_argument('--div_type', help='uot_mm divergence', type=str, default='--', choices=['kl', 'l2', '--'])
+# parser.add_argument('--chimera', help='Use BERTScore for parameter estimation', action='store_true')
 parser.add_argument('--pair_encode', action='store_true')
 parser.add_argument('--centering', action='store_true')
 parser.add_argument('--layer', default=6, type=int, help='Which hidden layer to use as token embedding')
@@ -299,17 +299,16 @@ def prepare_inputs(data_type):
     return s1_vecs, s2_vecs, sents1, sents2, golds
 
 
-def final_evaluation(aligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path):
-    aligner.compute_alignment_matrixes(s1_vecs, s2_vecs)
-    predictions = aligner.get_alignments(threshold)
+def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path):
+    accaligner.compute_alignment_matrixes(s1_vecs, s2_vecs)
+    predictions = accaligner.get_alignments(threshold)
     log = evaluate(golds, predictions, data_type, final_result_path)
     log_null = eval_null_alignments(golds, sents1, sents2, predictions, data_type, final_result_path)
     log_total = evaluate_total_score(golds, predictions, sents1, sents2, data_type, final_result_path)
 
-    predictions_with_cost = aligner.get_alignments(threshold, assign_cost=True)
-    with open(os.path.dirname(final_result_path) + '/{0}_alignments_{1:.4f}_{1:.4f}.txt'.format(data_type, aligner.tau,
-                                                                                                threshold),
-              'w') as fw:
+    predictions_with_cost = accaligner.get_alignments(threshold, assign_cost=True)
+    with open(os.path.dirname(final_result_path) + '/{0}_alignments_{1:.4f}_{1:.4f}.txt'.format(data_type, accaligner.tau, 
+                                                                                                threshold), 'w') as fw:
         fw.write('Sentence_1\tSentence_2\tGold\tPrediction\n')
         for s1, s2, gold_alignments, alignments in zip(sents1, sents2, golds, predictions_with_cost):
             fw.write('{0}\t{1}\t{2}\t{3}\n'.format(' '.join(s1), ' '.join(s2), ' '.join(gold_alignments),
@@ -324,131 +323,55 @@ if __name__ == '__main__':
     dev_s1_vecs, dev_s2_vecs, dev_sents1, dev_sents2, dev_golds = prepare_inputs('dev')
     test_s1_vecs, test_s2_vecs, test_sents1, test_sents2, test_golds = prepare_inputs('test')
 
-    for ot_type in args.ot_type:
-        out_dir = args.out + '{0}_sure-possible-{1}/{2}_{3}_{4}/{5}/'.format(args.data,
-                                                                             args.sure_and_possible,
-                                                                             ot_type,
-                                                                             args.weight_type, args.dist_type,
-                                                                             args.seed)
-        out_dir = make_save_dir(out_dir)
-        dev_log_path = out_dir + 'dev_log.txt'
-        dev_final_result_path = out_dir + 'dev_report.txt'
-        test_final_result_path = out_dir + 'test_report.txt'
+    out_dir = args.out + '{0}_sure-possible-{1}/{2}_{3}/{4}/'.format(args.data,
+                                                                        args.sure_and_possible,
+                                                                        args.weight_type, args.dist_type,
+                                                                        args.seed)
+    out_dir = make_save_dir(out_dir)
+    dev_log_path = out_dir + 'dev_log.txt'
+    dev_final_result_path = out_dir + 'dev_report.txt'
+    test_final_result_path = out_dir + 'test_report.txt'
 
-        best_thresh = 0
-        best_log = {'total_precision': 0.0, 'total_recall': 0.0, 'total_f1': 0.0, 'total_exact_match': 0.0}
+    best_thresh = 0
+    best_log = {'total_precision': 0.0, 'total_recall': 0.0, 'total_f1': 0.0, 'total_exact_match': 0.0}
 
-        thresh_range = np.linspace(0.0, 1.0, num=100, endpoint=True)
-        search_hypara_num = 50
-        if ot_type == 'uot-mm':
-            if args.div_type == 'kl':
-                hypara_range = np.logspace(-4, 0, num=200, endpoint=True)[1:]
+    thresh_range = np.linspace(0.0, 1.0, num=100, endpoint=True)
+    search_hypara_num = 50
+        
+    best_hypara = 0
+    no_improve_cnt = 0
+
+    hypara_range = np.linspace(0.0, 1.0, num=search_hypara_num + 1, endpoint=False)[1:]
+    patience = search_hypara_num
+
+    for hypara in tqdm(hypara_range, ' Hyper-parameter search'):
+        accaligner = AccAligner(args.dist_type, args.weight_type, distortion, 0, hypara, out_dir)
+        accaligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs, accaligner.thresh)
+        improved = False
+        for th in thresh_range:
+            redictions = accaligner.get_alignments(th)
+            log = evaluate_total_score(dev_golds, predictions, dev_sents1, dev_sents2, 'dev', dev_log_path)
+            if log['total_f1'] > best_log['total_f1']:
+                best_hypara = hypara
+                best_thresh = th
+                best_log = log
+                improved = True
+            if log['total_f1'] == 0.0:
+                break
+            if not improved:
+                no_improve_cnt += 1
             else:
-                hypara_range = np.logspace(-3, 3, num=200, endpoint=True)[1:]
-        else:
-            hypara_range = np.linspace(0.0, 1.0, num=search_hypara_num + 1, endpoint=False)[1:]
-            patience = search_hypara_num
+                no_improve_cnt = 0
+            if no_improve_cnt >= patience:
+                break
 
-        if ot_type == 'uot' or (ot_type == 'pot' and args.sinkhorn):
-            best_hypara = 0
-            no_improve_cnt = 0
-            for hypara in tqdm(hypara_range, desc=ot_type + ' Hyper-parameter search'):
-                aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion, 0,
-                                  hypara, out_dir, div_type=args.div_type)
-                aligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs)
-                improved = False
-                for th in thresh_range:
-                    predictions = aligner.get_alignments(th)
-                    log = evaluate_total_score(dev_golds, predictions, dev_sents1, dev_sents2, 'dev', dev_log_path)
-                    if log['total_f1'] > best_log['total_f1']:
-                        best_hypara = hypara
-                        best_thresh = th
-                        best_log = log
-                        improved = True
-                    if log['total_f1'] == 0.0:
-                        break
-                if not improved:
-                    no_improve_cnt += 1
-                else:
-                    no_improve_cnt = 0
-                if no_improve_cnt >= patience:
-                    break
+        with open(dev_log_path, 'a') as fw:
+            fw.write('*******************\n')
+            fw.write('Best alignment Hyperparameter:\t{0:.5f}\t{1:.5f}\n'.format(best_hypara, best_thresh))
 
-            with open(dev_log_path, 'a') as fw:
-                fw.write('*******************\n')
-                fw.write('Best alignment Hyperparameter:\t{0:.5f}\t{1:.5f}\n'.format(best_hypara, best_thresh))
-
-            aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion,
-                              best_thresh,
-                              best_hypara, out_dir, div_type=args.div_type)
-            final_evaluation(aligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
-                             'dev', dev_final_result_path)
-            final_evaluation(aligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                             'test', test_final_result_path)
-
-        elif (ot_type == 'pot' and not args.sinkhorn) or ot_type == 'uot-mm':
-            best_hypara = 0
-            no_improve_cnt = 0
-            for hypara in tqdm(hypara_range, desc=ot_type + ' Hyper-parameter search'):
-                aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion, 0,
-                                  hypara,
-                                  out_dir, div_type=args.div_type)
-                aligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs)
-                improved = False
-                predictions = aligner.get_alignments(0)
-                log = evaluate_total_score(dev_golds, predictions, dev_sents1, dev_sents2, 'dev', dev_log_path)
-                if log['total_f1'] > best_log['total_f1']:
-                    best_hypara = hypara
-                    best_log = log
-                    improved = True
-                if not improved:
-                    no_improve_cnt += 1
-                else:
-                    no_improve_cnt = 0
-                if no_improve_cnt >= patience:
-                    break
-
-            with open(dev_log_path, 'a') as fw:
-                fw.write('*******************\n')
-                fw.write('Best alignment Hyperparameter:\t{0:.5f}\n'.format(best_hypara))
-
-            aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion, 0,
-                              best_hypara,
-                              out_dir, div_type=args.div_type)
-            final_evaluation(aligner, 0, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
-                             'dev', dev_final_result_path)
-            final_evaluation(aligner, 0, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                             'test', test_final_result_path)
-
-        elif args.sinkhorn or ot_type == 'none':
-            aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion, 0, 0,
-                              out_dir, div_type=args.div_type)
-            aligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs)
-
-            for th in tqdm(thresh_range, desc=ot_type + ' Threshold search'):
-                predictions = aligner.get_alignments(th)
-                log = evaluate_total_score(dev_golds, predictions, dev_sents1, dev_sents2, 'dev', dev_log_path)
-                if log['total_f1'] > best_log['total_f1']:
-                    best_thresh = th
-                    best_log = log
-                if log['total_f1'] == 0.0:
-                    break
-
-            with open(dev_log_path, 'a') as fw:
-                fw.write('*******************\n')
-                fw.write('Best alignment Hyperparameter:\t{0:.5f}\n'.format(best_thresh))
-
-            aligner.thresh = best_thresh
-            aligner.save_hyper_parameters()
-            final_evaluation(aligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
-                             'dev', dev_final_result_path)
-            final_evaluation(aligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                             'test', test_final_result_path)
-        else:
-            aligner = Aligner(ot_type, args.sinkhorn, args.chimera, args.dist_type, args.weight_type, distortion, 0, 0,
-                              out_dir,
-                              div_type=args.div_type)
-            final_evaluation(aligner, 0, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2, 'dev',
-                             dev_final_result_path)
-            final_evaluation(aligner, 0, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                             'test', test_final_result_path)
+        accaligner = AccAligner(args.dist_type, args.weight_type, distortion, best_thresh, 
+                                best_hypara, out_dir)
+        final_evaluation(accaligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
+                            'dev', dev_final_result_path)
+        final_evaluation(accaligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
+                            'test', test_final_result_path)
