@@ -296,11 +296,13 @@ def prepare_inputs(data_type):
             vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, False)
             # assert len(sents2[idx]) == vec.shape[0]
             s2_vecs.append(vec)
+    # print('sents1', sents1[0])
+    # print('sents2', sents2[0])
     return s1_vecs, s2_vecs, sents1, sents2, golds
 
 
 def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path):
-    accaligner.compute_alignment_matrixes(s1_vecs, s2_vecs)
+    accaligner.compute_alignment_matrixes(s1_vecs, s2_vecs, accaligner.thresh)
     predictions = accaligner.get_alignments(threshold)
     log = evaluate(golds, predictions, data_type, final_result_path)
     log_null = eval_null_alignments(golds, sents1, sents2, predictions, data_type, final_result_path)
@@ -349,7 +351,7 @@ if __name__ == '__main__':
         accaligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs, accaligner.thresh)
         improved = False
         for th in thresh_range:
-            redictions = accaligner.get_alignments(th)
+            predictions = accaligner.get_alignments(th)
             log = evaluate_total_score(dev_golds, predictions, dev_sents1, dev_sents2, 'dev', dev_log_path)
             if log['total_f1'] > best_log['total_f1']:
                 best_hypara = hypara

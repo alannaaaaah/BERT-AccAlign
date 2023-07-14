@@ -1,0 +1,650 @@
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000
+Task: mtref dev
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref dev
+Null ratio (corpus): 0.9263
+Null ratio (sentence): 0.1334
+Precision	Recall	F1	ExactMatch
+13.33756	92.62500	23.31751	0.00000
+*******************
+Task [Total]: mtref dev
+Precision	Recall	F1	ExactMatch
+13.33756	20.51608	16.16573	0.00000

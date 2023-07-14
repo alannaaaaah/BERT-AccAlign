@@ -2,7 +2,6 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import ot
-import tensorflow as tf
 from util import *
 from model_parts import *
 
@@ -178,7 +177,7 @@ class Aligner:
             fw.write('tau: {0}\n'.format(self.tau))
             fw.write('threshold: {0}\n'.format(self.thresh))
 
-class AccAligner:
+class AccAligner(Aligner):
     def __init__(self, dist_type, weight_type, distortion, thresh, tau, outdir, **kwargs):
         self.dist_type = dist_type
         self.weight_type = weight_type
@@ -191,6 +190,11 @@ class AccAligner:
         self.outdir = outdir
         self.save_hyper_parameters()
 
+        self.ot_type = 'none'
+        self.sinkhorn = 'none'
+        self.chimera = 'none'
+        self.div_type = 'none'
+
         self.dist_func = compute_distance_matrix_cosine if dist_type == 'cos' else compute_distance_matrix_l2
         if weight_type == 'uniform':
             self.weight_func = compute_weights_uniform
@@ -202,30 +206,23 @@ class AccAligner:
         for vecX, vecY in zip(s1_vecs, s2_vecs):
             S_XY = self.compute_similarity_matrix(vecX, vecY)
             S_YX = self.compute_similarity_matrix(vecY, vecX)
-            A = (S_XY > thresh) * (tf.transpose(S_YX, perm=None, conjugate=False, name='transpose')  > thresh)
+            A = (torch.matmul((S_XY > thresh).float(), (S_YX  > thresh).float())).bool()
 
             if torch.is_tensor(A):
                 A = A.to('cpu').numpy()
 
             self.align_matrixes.append(A)
-
+    
     def compute_similarity_matrix(self, vecX, vecY):
         s1_word_embeddigs = vecX.to(torch.float64)
         s2_word_embeddigs = vecY.to(torch.float64)
 
         # S = s1_embeddings * s2_embeddings.T
-        print(s1_word_embeddigs.type)
-        print(s1_word_embeddigs)
-        S = s1_word_embeddigs * tf.transpose(s2_word_embeddigs, perm=None, conjugate=False, name='transpose')
-        S = S.normalize()
+        # print(s1_word_embeddigs.size())
+        # print(torch.t(s2_word_embeddigs).size())
+        S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
+        S = torch.nn.functional.normalize(S)
         return S
-    
-    def normalize(self):
-        min = self.min(axis=0)
-        max = self.max(axis=0)
-        X_std = (self - min) / (max - min)
-        X_scaled = X_std * (max - min) + min
-        return X_scaled
     
     def save_hyper_parameters(self):
         with open(self.outdir + 'hparams.yaml', 'w') as fw:

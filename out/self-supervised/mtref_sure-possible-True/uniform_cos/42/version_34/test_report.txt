@@ -1,0 +1,650 @@
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
+Task: mtref test
+Precision	Recall	F1	ExactMatch
+0.00000	0.00000	0.00000	0.00000
+*******************
+Task [NULL]: mtref test
+Null ratio (corpus): 0.9163
+Null ratio (sentence): 0.1122
+Precision	Recall	F1	ExactMatch
+11.21890	91.62500	19.99014	0.00000
+*******************
+Task [Total]: mtref test
+Precision	Recall	F1	ExactMatch
+11.21890	17.54517	13.68635	0.00000
