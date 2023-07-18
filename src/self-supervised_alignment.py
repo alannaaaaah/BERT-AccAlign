@@ -10,16 +10,10 @@ from baseline import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data', default='mtref', type=str,
-                    choices=['mtref', 'wiki', 'newsela', 'arxiv', 'msr', 'edinburgh'], required=True)
+                    choices=['mtref', 'msr', 'edinburgh'], required=True)
 parser.add_argument('--sure_and_possible', action='store_true')
 parser.add_argument('--out', default='../out/self-supervised/', type=str, required=True)
 parser.add_argument('--model', default='bert-base-cased', type=str)
-# parser.add_argument('--ot_type', default='OT type', type=str, required=True, nargs='*')
-parser.add_argument('--weight_type', help='Weight type', type=str, choices=['norm', 'uniform', '--'], default='--')
-parser.add_argument('--dist_type', help='Distance metric', type=str, choices=['cos', 'l2'], required=True)
-# parser.add_argument('--sinkhorn', help='Use sinkhorn', action='store_true')
-# parser.add_argument('--div_type', help='uot_mm divergence', type=str, default='--', choices=['kl', 'l2', '--'])
-# parser.add_argument('--chimera', help='Use BERTScore for parameter estimation', action='store_true')
 parser.add_argument('--pair_encode', action='store_true')
 parser.add_argument('--centering', action='store_true')
 parser.add_argument('--layer', default=6, type=int, help='Which hidden layer to use as token embedding')
@@ -276,9 +270,6 @@ def prepare_inputs(data_type):
             offset_mapping = offset_mappings[idx]
             s1_vec, s2_vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, True)
 
-            # assert len(sents1[idx]) == s1_vec.shape[0]
-            # assert len(sents2[idx]) == s2_vec.shape[0]
-
             s1_vecs.append(s1_vec)
             s2_vecs.append(s2_vec)
     else:
@@ -287,14 +278,12 @@ def prepare_inputs(data_type):
             input_id = input_ids[idx * 2]
             offset_mapping = offset_mappings[idx * 2]
             vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, False)
-            # assert len(sents1[idx]) == vec.shape[0]
             s1_vecs.append(vec)
 
             hidden_output = hidden_outputs[idx * 2 + 1]
             input_id = input_ids[idx * 2 + 1]
             offset_mapping = offset_mappings[idx * 2 + 1]
             vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, False)
-            # assert len(sents2[idx]) == vec.shape[0]
             s2_vecs.append(vec)
     # print('sents1', sents1[0])
     # print('sents2', sents2[0])
@@ -309,8 +298,7 @@ def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sen
     log_total = evaluate_total_score(golds, predictions, sents1, sents2, data_type, final_result_path)
 
     predictions_with_cost = accaligner.get_alignments(threshold, assign_cost=True)
-    with open(os.path.dirname(final_result_path) + '/{0}_alignments_{1:.4f}_{1:.4f}.txt'.format(data_type, accaligner.tau, 
-                                                                                                threshold), 'w') as fw:
+    with open(os.path.dirname(final_result_path) + '/{0}_alignments_{1:.4f}_{1:.4f}.txt'.format(data_type, threshold), 'w') as fw:
         fw.write('Sentence_1\tSentence_2\tGold\tPrediction\n')
         for s1, s2, gold_alignments, alignments in zip(sents1, sents2, golds, predictions_with_cost):
             fw.write('{0}\t{1}\t{2}\t{3}\n'.format(' '.join(s1), ' '.join(s2), ' '.join(gold_alignments),
@@ -325,10 +313,9 @@ if __name__ == '__main__':
     dev_s1_vecs, dev_s2_vecs, dev_sents1, dev_sents2, dev_golds = prepare_inputs('dev')
     test_s1_vecs, test_s2_vecs, test_sents1, test_sents2, test_golds = prepare_inputs('test')
 
-    out_dir = args.out + '{0}_sure-possible-{1}/{2}_{3}/{4}/'.format(args.data,
-                                                                        args.sure_and_possible,
-                                                                        args.weight_type, args.dist_type,
-                                                                        args.seed)
+    out_dir = args.out + '{0}_sure-possible-{1}/{2}/'.format(args.data,
+                                                             args.sure_and_possible,
+                                                             args.seed)
     out_dir = make_save_dir(out_dir)
     dev_log_path = out_dir + 'dev_log.txt'
     dev_final_result_path = out_dir + 'dev_report.txt'
@@ -347,7 +334,7 @@ if __name__ == '__main__':
     patience = search_hypara_num
 
     for hypara in tqdm(hypara_range, ' Hyper-parameter search'):
-        accaligner = AccAligner(args.dist_type, args.weight_type, distortion, 0, hypara, out_dir)
+        accaligner = AccAligner(distortion, 0, out_dir)
         accaligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs, accaligner.thresh)
         improved = False
         for th in thresh_range:
@@ -367,13 +354,12 @@ if __name__ == '__main__':
             if no_improve_cnt >= patience:
                 break
 
-        with open(dev_log_path, 'a') as fw:
-            fw.write('*******************\n')
-            fw.write('Best alignment Hyperparameter:\t{0:.5f}\t{1:.5f}\n'.format(best_hypara, best_thresh))
+    with open(dev_log_path, 'a') as fw:
+        fw.write('*******************\n')
+        fw.write('Best alignment Hyperparameter:\t{0:.5f}\t{1:.5f}\n'.format(best_hypara, best_thresh))
 
-        accaligner = AccAligner(args.dist_type, args.weight_type, distortion, best_thresh, 
-                                best_hypara, out_dir)
-        final_evaluation(accaligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
-                            'dev', dev_final_result_path)
-        final_evaluation(accaligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                            'test', test_final_result_path)
+    accaligner = AccAligner(distortion, best_thresh, out_dir)
+    final_evaluation(accaligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
+                        'dev', dev_final_result_path)
+    final_evaluation(accaligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
+                        'test', test_final_result_path)

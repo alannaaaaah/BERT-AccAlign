@@ -177,30 +177,17 @@ class Aligner:
             fw.write('tau: {0}\n'.format(self.tau))
             fw.write('threshold: {0}\n'.format(self.thresh))
 
-class AccAligner(Aligner):
-    def __init__(self, dist_type, weight_type, distortion, thresh, tau, outdir, **kwargs):
-        self.dist_type = dist_type
-        self.weight_type = weight_type
+
+class AccAligner():
+    def __init__(self, distortion, thresh, outdir, **kwargs):
         self.distotion = distortion
         self.thresh = thresh
-        self.tau = tau
         self.epsilon = 0.1
         self.stopThr = 1e-6
         self.numItermax = 1000
         self.outdir = outdir
         self.save_hyper_parameters()
-
-        self.ot_type = 'none'
-        self.sinkhorn = 'none'
-        self.chimera = 'none'
-        self.div_type = 'none'
-
-        self.dist_func = compute_distance_matrix_cosine if dist_type == 'cos' else compute_distance_matrix_l2
-        if weight_type == 'uniform':
-            self.weight_func = compute_weights_uniform
-        else:
-            self.weight_func = compute_weights_norm
-    
+  
     def compute_alignment_matrixes(self, s1_vecs, s2_vecs, thresh):
         self.align_matrixes = []
         for vecX, vecY in zip(s1_vecs, s2_vecs):
@@ -212,23 +199,41 @@ class AccAligner(Aligner):
                 A = A.to('cpu').numpy()
 
             self.align_matrixes.append(A)
+
+    def get_alignments(self, thresh, assign_cost=False):
+        assert len(self.align_matrixes) > 0
+
+        self.thresh = thresh
+        all_alignments = []
+        for P in self.align_matrixes:
+            alignments = self.matrix_to_alignments(P, assign_cost)
+            all_alignments.append(alignments)
+
+        return all_alignments
+
+    def matrix_to_alignments(self, P, assign_cost):
+        alignments = set()
+        align_pairs = np.transpose(np.nonzero(P > self.thresh))
+        if assign_cost:
+            for i_j in align_pairs:
+                alignments.add('{0}-{1}-{2:.4f}'.format(i_j[0], i_j[1], P[i_j[0], i_j[1]]))
+        else:
+            for i_j in align_pairs:
+                alignments.add('{0}-{1}'.format(i_j[0], i_j[1]))
+
+        return alignments
     
     def compute_similarity_matrix(self, vecX, vecY):
         s1_word_embeddigs = vecX.to(torch.float64)
         s2_word_embeddigs = vecY.to(torch.float64)
 
         # S = s1_embeddings * s2_embeddings.T
-        # print(s1_word_embeddigs.size())
-        # print(torch.t(s2_word_embeddigs).size())
         S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
-        S = torch.nn.functional.normalize(S)
+        S = min_max_scaling(S)
         return S
     
     def save_hyper_parameters(self):
         with open(self.outdir + 'hparams.yaml', 'w') as fw:
             fw.write('epsilon: {0}\n'.format(self.epsilon))
-            fw.write('dist_type: {0}\n'.format(self.dist_type))
-            fw.write('weight_type: {0}\n'.format(self.weight_type))
-            fw.write('tau: {0}\n'.format(self.tau))
             fw.write('threshold: {0}\n'.format(self.thresh))
         

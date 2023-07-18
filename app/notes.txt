@@ -1,0 +1,5 @@
+F1 score:
+    2 * (Precision * Recall) / (Precision + Recall)
+
+    - Precision = TP/(TP+FP)
+    - Recall = TP/(TP+FN)
