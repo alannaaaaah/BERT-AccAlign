@@ -188,32 +188,35 @@ class AccAligner():
         self.outdir = outdir
         self.save_hyper_parameters()
   
-    def compute_alignment_matrixes(self, s1_vecs, s2_vecs, thresh):
-        self.align_matrixes = []
+    def compute_pre_thresh_alignment_matrixes(self, s1_vecs, s2_vecs):
+        self.sim_pair_matrixes = []
         for vecX, vecY in zip(s1_vecs, s2_vecs):
-            S_XY = self.compute_similarity_matrix(vecX, vecY)
-            S_YX = self.compute_similarity_matrix(vecY, vecX)
-            A = (torch.matmul((S_XY > thresh).float(), (S_YX  > thresh).float())).bool()
+            S_XY = self.compute_similarity_matrix(vecX, vecY, 1)
+            S_YX = self.compute_similarity_matrix(vecY, vecX, 0)
+            sim_pair = [S_XY, S_YX]
+            for sim in sim_pair:
+                if torch.is_tensor(sim):
+                    sim = sim.to('cpu').numpy()
 
-            if torch.is_tensor(A):
-                A = A.to('cpu').numpy()
-
-            self.align_matrixes.append(A)
+            self.sim_pair_matrixes.append(sim_pair)
 
     def get_alignments(self, thresh, assign_cost=False):
-        assert len(self.align_matrixes) > 0
+        # assert len(self.align_matrixes) > 0
 
         self.thresh = thresh
         all_alignments = []
-        for P in self.align_matrixes:
-            alignments = self.matrix_to_alignments(P, assign_cost)
+        for sim_pair in self.sim_pair_matrixes:
+            A = (torch.matmul((sim_pair[0] > thresh).float(), (sim_pair[1]  > thresh).float())).bool()
+            alignments = self.matrix_to_alignments(A, assign_cost)
             all_alignments.append(alignments)
-
         return all_alignments
-
+    
     def matrix_to_alignments(self, P, assign_cost):
+        if torch.is_tensor(P):
+            P = P.to('cpu').numpy()
+
         alignments = set()
-        align_pairs = np.transpose(np.nonzero(P > self.thresh))
+        align_pairs = np.transpose(np.nonzero(P))
         if assign_cost:
             for i_j in align_pairs:
                 alignments.add('{0}-{1}-{2:.4f}'.format(i_j[0], i_j[1], P[i_j[0], i_j[1]]))
@@ -223,13 +226,13 @@ class AccAligner():
 
         return alignments
     
-    def compute_similarity_matrix(self, vecX, vecY):
+    def compute_similarity_matrix(self, vecX, vecY, normalize_on):
         s1_word_embeddigs = vecX.to(torch.float64)
         s2_word_embeddigs = vecY.to(torch.float64)
 
         # S = s1_embeddings * s2_embeddings.T
         S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
-        S = min_max_scaling(S)
+        S = torch.nn.Softmax(dim=normalize_on)(S)
         return S
     
     def save_hyper_parameters(self):

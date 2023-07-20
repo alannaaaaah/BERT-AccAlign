@@ -291,7 +291,7 @@ def prepare_inputs(data_type):
 
 
 def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path):
-    accaligner.compute_alignment_matrixes(s1_vecs, s2_vecs, accaligner.thresh)
+    accaligner.compute_pre_thresh_alignment_matrixes(s1_vecs, s2_vecs)
     predictions = accaligner.get_alignments(threshold)
     log = evaluate(golds, predictions, data_type, final_result_path)
     log_null = eval_null_alignments(golds, sents1, sents2, predictions, data_type, final_result_path)
@@ -335,7 +335,7 @@ if __name__ == '__main__':
 
     for hypara in tqdm(hypara_range, ' Hyper-parameter search'):
         accaligner = AccAligner(distortion, 0, out_dir)
-        accaligner.compute_alignment_matrixes(dev_s1_vecs, dev_s2_vecs, accaligner.thresh)
+        accaligner.compute_pre_thresh_alignment_matrixes(dev_s1_vecs, dev_s2_vecs)
         improved = False
         for th in thresh_range:
             predictions = accaligner.get_alignments(th)
