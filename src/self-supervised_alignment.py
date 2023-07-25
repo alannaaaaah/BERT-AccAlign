@@ -297,7 +297,7 @@ def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sen
     log_null = eval_null_alignments(golds, sents1, sents2, predictions, data_type, final_result_path)
     log_total = evaluate_total_score(golds, predictions, sents1, sents2, data_type, final_result_path)
 
-    predictions_with_cost = accaligner.get_alignments(threshold, assign_cost=True)
+    predictions_with_cost = accaligner.get_alignments(threshold, assign_cost=False)
     with open(os.path.dirname(final_result_path) + '/{0}_alignments_{1:.4f}_{1:.4f}.txt'.format(data_type, threshold), 'w') as fw:
         fw.write('Sentence_1\tSentence_2\tGold\tPrediction\n')
         for s1, s2, gold_alignments, alignments in zip(sents1, sents2, golds, predictions_with_cost):

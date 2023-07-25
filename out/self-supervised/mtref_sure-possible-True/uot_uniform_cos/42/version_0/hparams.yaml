@@ -5,5 +5,5 @@ chimera: False
 dist_type: cos
 weight_type: uniform
 div_type: --
-tau: 0.8627450980392157
-threshold: 0
+tau: 0.9803921568627451
+threshold: 0.25252525252525254
