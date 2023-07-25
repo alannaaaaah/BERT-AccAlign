@@ -206,7 +206,7 @@ class AccAligner():
         self.thresh = thresh
         all_alignments = []
         for sim_pair in self.sim_pair_matrixes:
-            A = (torch.matmul((sim_pair[0] > thresh).float(), (sim_pair[1]  > thresh).float())).bool()
+            A = (torch.matmul((sim_pair[0] > thresh).float(), (sim_pair[1]  > thresh).float()))
             alignments = self.matrix_to_alignments(A, assign_cost)
             all_alignments.append(alignments)
         return all_alignments
@@ -223,7 +223,7 @@ class AccAligner():
         else:
             for i_j in align_pairs:
                 alignments.add('{0}-{1}'.format(i_j[0], i_j[1]))
-
+                
         return alignments
     
     def compute_similarity_matrix(self, vecX, vecY, normalize_on):

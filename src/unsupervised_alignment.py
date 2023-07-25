@@ -315,6 +315,8 @@ def final_evaluation(aligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2
         for s1, s2, gold_alignments, alignments in zip(sents1, sents2, golds, predictions_with_cost):
             fw.write('{0}\t{1}\t{2}\t{3}\n'.format(' '.join(s1), ' '.join(s2), ' '.join(gold_alignments),
                                                    ' '.join(alignments)))
+        print(gold_alignments)
+        print(alignments)
 
 
 if __name__ == '__main__':
