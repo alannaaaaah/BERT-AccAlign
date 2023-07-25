@@ -191,8 +191,8 @@ class AccAligner():
     def compute_pre_thresh_alignment_matrixes(self, s1_vecs, s2_vecs):
         self.sim_pair_matrixes = []
         for vecX, vecY in zip(s1_vecs, s2_vecs):
-            S_XY = self.compute_similarity_matrix(vecX, vecY, 1)
-            S_YX = self.compute_similarity_matrix(vecY, vecX, 0)
+            S_XY = self.compute_similarity_matrix(vecX, vecY, -1)
+            S_YX = self.compute_similarity_matrix(vecX, vecY, -2)
             sim_pair = [S_XY, S_YX]
             for sim in sim_pair:
                 if torch.is_tensor(sim):
@@ -206,7 +206,7 @@ class AccAligner():
         self.thresh = thresh
         all_alignments = []
         for sim_pair in self.sim_pair_matrixes:
-            A = (torch.matmul((sim_pair[0] > thresh).float(), (sim_pair[1]  > thresh).float()))
+            A = (sim_pair[0] > thresh) * (sim_pair[1]  > thresh)
             alignments = self.matrix_to_alignments(A, assign_cost)
             all_alignments.append(alignments)
         return all_alignments
@@ -231,7 +231,8 @@ class AccAligner():
         s2_word_embeddigs = vecY.to(torch.float64)
 
         # S = s1_embeddings * s2_embeddings.T
-        S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
+        S = torch.matmul(s1_word_embeddigs, s2_word_embeddigs.transpose(-1, -2))
+        #S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
         S = torch.nn.Softmax(dim=normalize_on)(S)
         return S
     
