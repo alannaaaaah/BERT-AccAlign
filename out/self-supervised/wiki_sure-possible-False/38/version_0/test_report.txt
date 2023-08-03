@@ -1,0 +1,13 @@
+Task: wiki test
+Precision	Recall	F1	ExactMatch
+98.17813	95.83650	96.99319	51.71103
+*******************
+Task [NULL]: wiki test
+Null ratio (corpus): 0.7738
+Null ratio (sentence): 0.0825
+Precision	Recall	F1	ExactMatch
+75.43121	79.47952	77.40246	52.56654
+*******************
+Task [Total]: wiki test
+Precision	Recall	F1	ExactMatch
+95.10259	94.91244	95.00742	51.71103

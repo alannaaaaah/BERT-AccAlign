@@ -1,0 +1,13 @@
+Task: arxiv test
+Precision	Recall	F1	ExactMatch
+94.54651	94.31691	94.43157	44.00000
+*******************
+Task [NULL]: arxiv test
+Null ratio (corpus): 0.7500
+Null ratio (sentence): 0.1221
+Precision	Recall	F1	ExactMatch
+75.38163	79.58993	77.42864	45.00000
+*******************
+Task [Total]: arxiv test
+Precision	Recall	F1	ExactMatch
+92.52378	92.56811	92.54594	44.00000

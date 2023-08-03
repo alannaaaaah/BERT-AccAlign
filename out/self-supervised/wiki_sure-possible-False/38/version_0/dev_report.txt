@@ -1,0 +1,13 @@
+Task: wiki dev
+Precision	Recall	F1	ExactMatch
+97.78594	95.31717	96.53577	49.15572
+*******************
+Task [NULL]: wiki dev
+Null ratio (corpus): 0.7805
+Null ratio (sentence): 0.0819
+Precision	Recall	F1	ExactMatch
+74.78432	80.59570	77.58133	49.71857
+*******************
+Task [Total]: wiki dev
+Precision	Recall	F1	ExactMatch
+94.57935	94.43109	94.50516	49.15572

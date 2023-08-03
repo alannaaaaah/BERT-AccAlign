@@ -143,6 +143,7 @@ def read_Preprocessed_Word_Alignment_Dataset(file_path):
 
 
 def load_WA_corpus(data, type, sure_and_possible):
+    
     if data in ['mtref', 'wiki', 'msr', 'edinburgh']:
         load_data = data
     else:
@@ -177,6 +178,7 @@ def load_WA_corpus(data, type, sure_and_possible):
         else:
             data_path += 'sure_' + type + '.txt'
         examples = read_Preprocessed_Word_Alignment_Dataset(data_path)
+    print('Data load: ', load_data, sure_and_possible, type)
 
     return examples
 

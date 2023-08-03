@@ -30,6 +30,13 @@ torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
 
+state = np.random.get_state()
+current_seed = state[0]
+if current_seed is not None:
+    print(f"The random seed is set globally with value: {current_seed}")
+    print(f"The local seed is: {args.seed}")
+else:
+    print("The random seed is not set globally.")
 
 def evaluate(golds, predictions, data_type, out_path):
     precision_all = []
@@ -315,8 +322,7 @@ def final_evaluation(aligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2
         for s1, s2, gold_alignments, alignments in zip(sents1, sents2, golds, predictions_with_cost):
             fw.write('{0}\t{1}\t{2}\t{3}\n'.format(' '.join(s1), ' '.join(s2), ' '.join(gold_alignments),
                                                    ' '.join(alignments)))
-        print(gold_alignments)
-        print(alignments)
+
 
 
 if __name__ == '__main__':

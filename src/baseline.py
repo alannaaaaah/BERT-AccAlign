@@ -232,7 +232,6 @@ class AccAligner():
 
         # S = s1_embeddings * s2_embeddings.T
         S = torch.matmul(s1_word_embeddigs, s2_word_embeddigs.transpose(-1, -2))
-        #S = torch.matmul(s1_word_embeddigs, torch.t(s2_word_embeddigs))
         S = torch.nn.Softmax(dim=normalize_on)(S)
         return S
     

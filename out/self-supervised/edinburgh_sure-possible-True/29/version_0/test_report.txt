@@ -1,0 +1,13 @@
+Task: edinburgh test
+Precision	Recall	F1	ExactMatch
+90.05500	86.65753	88.32360	11.76471
+*******************
+Task [NULL]: edinburgh test
+Null ratio (corpus): 0.9118
+Null ratio (sentence): 0.1900
+Precision	Recall	F1	ExactMatch
+70.12446	71.61751	70.86312	13.39869
+*******************
+Task [Total]: edinburgh test
+Precision	Recall	F1	ExactMatch
+84.56277	81.52947	83.01842	11.76471

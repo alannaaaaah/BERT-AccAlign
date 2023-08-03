@@ -4,13 +4,13 @@ import glob
 import numpy as np
 import torch
 from tqdm import tqdm
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer, AutoModel, set_seed
 from util import *
 from baseline import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data', default='mtref', type=str,
-                    choices=['mtref', 'msr', 'edinburgh'], required=True)
+                    choices=['mtref', 'wiki', 'newsela', 'arxiv', 'msr', 'edinburgh'], required=True)
 parser.add_argument('--sure_and_possible', action='store_true')
 parser.add_argument('--out', default='../out/self-supervised/', type=str, required=True)
 parser.add_argument('--model', default='bert-base-cased', type=str)
@@ -23,6 +23,18 @@ args = parser.parse_args()
 torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
+#torch.manual_seed(args.seed)
+#torch.cuda.manual_seed_all(args.seed)
+#torch.backends.cudnn.deterministic = True
+#torch.backends.cudnn.benchmark = False
+
+state = np.random.get_state()
+current_seed = state[0]
+if current_seed is not None:
+    print(f"The random seed is set globally with value: {current_seed}")
+    print(f"The local seed is: {args.seed}")
+else:
+    print("The random seed is not set globally.")
 
 
 def evaluate(golds, predictions, data_type, out_path):
@@ -226,6 +238,7 @@ def encode_sentence(sent, pair):
 
 
 def prepare_inputs(data_type):
+    print('Data input: ', args.data, args.sure_and_possible, data_type)
     sents1, sents2, align_lists = load_WA_corpus(args.data, data_type, args.sure_and_possible)
     golds = [set(alignments.split()) for alignments in align_lists]
     
@@ -285,8 +298,9 @@ def prepare_inputs(data_type):
             offset_mapping = offset_mappings[idx * 2 + 1]
             vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, False)
             s2_vecs.append(vec)
-    # print('sents1', sents1[0])
-    # print('sents2', sents2[0])
+    print('sents1', sents1[0])
+    print('sents2', sents2[0])
+    print('golds', golds[0])
     return s1_vecs, s2_vecs, sents1, sents2, golds
 
 
@@ -308,11 +322,12 @@ def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sen
 
 if __name__ == '__main__':
     tokenizer = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModel.from_pretrained(args.model, output_hidden_states=True).to('cuda').eval()
+    model = AutoModel.from_pretrained(args.model, output_hidden_states=True).to('cuda').train()#.eval()
     distortion = load_distortion_setting('distortion_setting.yml', args.data, args.sure_and_possible)
 
     dev_s1_vecs, dev_s2_vecs, dev_sents1, dev_sents2, dev_golds = prepare_inputs('dev')
     test_s1_vecs, test_s2_vecs, test_sents1, test_sents2, test_golds = prepare_inputs('test')
+
 
     out_dir = args.out + '{0}_sure-possible-{1}/{2}/'.format(args.data,
                                                              args.sure_and_possible,
@@ -354,6 +369,7 @@ if __name__ == '__main__':
                 no_improve_cnt = 0
             if no_improve_cnt >= patience:
                 break
+
 
     with open(dev_log_path, 'a') as fw:
         fw.write('*******************\n')

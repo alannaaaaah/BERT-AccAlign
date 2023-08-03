@@ -1,0 +1,13 @@
+Task: msr dev
+Precision	Recall	F1	ExactMatch
+78.60592	88.89618	83.43497	16.50000
+*******************
+Task [NULL]: msr dev
+Null ratio (corpus): 0.9950
+Null ratio (sentence): 0.6067
+Precision	Recall	F1	ExactMatch
+94.72162	86.68815	90.52701	17.00000
+*******************
+Task [Total]: msr dev
+Precision	Recall	F1	ExactMatch
+90.63650	86.92379	88.74133	16.50000

@@ -1,0 +1,13 @@
+Task: msr test
+Precision	Recall	F1	ExactMatch
+81.85429	74.14673	77.81011	10.62500
+*******************
+Task [NULL]: msr test
+Null ratio (corpus): 0.9962
+Null ratio (sentence): 0.5900
+Precision	Recall	F1	ExactMatch
+89.31240	90.93281	90.11532	10.75000
+*******************
+Task [Total]: msr test
+Precision	Recall	F1	ExactMatch
+88.42189	84.05669	86.18406	10.62500

@@ -1,7 +1,7 @@
 # unsupervised
     UN_OUTDIR=../out/unsupervised/
-    SEED=42
-    DATA=mtref
+    SEED=13
+    DATA=arxiv
     OT=uot
     WT=uniform
     DT=cos
@@ -11,6 +11,6 @@ CUDA_VISIBLE_DEVICES=2 python unsupervised_alignment.py --data $DATA --sure_and_
 # self-supervised
     UN_OUTDIR=../out/self-supervised/
     SEED=42
-    DATA=mtref
+    DATA=arxiv
 CUDA_VISIBLE_DEVICES=2 python self-supervised_alignment.py --data $DATA --sure_and_possible --model bert-base-uncased --centering --pair_encode --layer 6 --out $UN_OUTDIR --seed $SEED
 CUDA_VISIBLE_DEVICES=2 python self-supervised_alignment.py --data $DATA --model bert-base-uncased --centering --pair_encode --layer 6 --out $UN_OUTDIR --seed $SEED
