@@ -1,0 +1,13 @@
+Task: newsela test
+Precision	Recall	F1	ExactMatch
+87.85733	77.17237	82.16895	10.20000
+*******************
+Task [NULL]: newsela test
+Null ratio (corpus): 0.9360
+Null ratio (sentence): 0.2349
+Precision	Recall	F1	ExactMatch
+63.24153	76.88978	69.40101	10.40000
+*******************
+Task [Total]: newsela test
+Precision	Recall	F1	ExactMatch
+81.51986	78.69609	80.08309	10.20000

@@ -2,6 +2,7 @@ import argparse, random, os
 import glob
 
 import numpy as np
+import csv
 import torch
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModel, set_seed
@@ -23,10 +24,6 @@ args = parser.parse_args()
 torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
-#torch.manual_seed(args.seed)
-#torch.cuda.manual_seed_all(args.seed)
-#torch.backends.cudnn.deterministic = True
-#torch.backends.cudnn.benchmark = False
 
 state = np.random.get_state()
 current_seed = state[0]
@@ -37,7 +34,7 @@ else:
     print("The random seed is not set globally.")
 
 
-def evaluate(golds, predictions, data_type, out_path):
+def evaluate(golds, predictions, data_type, out_path, log_per_sent=False):
     precision_all = []
     recall_all = []
     acc = []
@@ -85,7 +82,7 @@ def evaluate(golds, predictions, data_type, out_path):
     return {'precision': precision, 'recall': recall, 'f1': f1, 'exact_match': accuracy}
 
 
-def eval_null_alignments(golds, sents1, sents2, predictions, data_type, out_path):
+def eval_null_alignments(golds, sents1, sents2, predictions, data_type, out_path, log_per_sent=False):
     null_precision, null_recall, null_EM = [], [], []
     null_ratio_corpus, null_ratio_sent = 0, 0
     for gold, sent1, sent2, pred in zip(golds, sents1, sents2, predictions):
@@ -152,7 +149,7 @@ def eval_null_alignments(golds, sents1, sents2, predictions, data_type, out_path
     return {'null_precision': precision, 'null_recall': recall, 'null_f1': f1, 'null_exact_match': accuracy}
 
 
-def evaluate_total_score(golds, predictions, sents1, sents2, data_type, out_path):
+def evaluate_total_score(golds, predictions, sents1, sents2, data_type, out_path, log_per_sent=False):
     precision_all = []
     recall_all = []
     acc = []
@@ -182,6 +179,14 @@ def evaluate_total_score(golds, predictions, sents1, sents2, data_type, out_path
         else:
             acc.append(0)
 
+        if log_per_sent:
+            null_ratio_per_sent = (len(gold_null_s1_indices) + len(gold_null_s2_indices)) / (len(sent1) + len(sent2))
+            data = [null_ratio_per_sent, precision, recall]
+            # edit csv file
+            with open(out_path, mode='a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(data)
+
     precision = sum(precision_all) / len(precision_all)
     recall = sum(recall_all) / len(recall_all)
     if precision + recall > 0:
@@ -196,10 +201,11 @@ def evaluate_total_score(golds, predictions, sents1, sents2, data_type, out_path
     # print('F1\t{0:.5f}'.format(f1 * 100))
     # print('ExactMatch\t{0:.5f}'.format(accuracy * 100))
 
-    with open(out_path, 'a') as fw:
-        fw.write('Task [Total]: {0} {1}\n'.format(args.data, data_type))
-        fw.write('Precision\tRecall\tF1\tExactMatch\n')
-        fw.write('{0:.5f}\t{1:.5f}\t{2:.5f}\t{3:.5f}\n'.format(precision * 100, recall * 100, f1 * 100, accuracy * 100))
+    if not log_per_sent:
+        with open(out_path, 'a') as fw:
+            fw.write('Task [Total]: {0} {1}\n'.format(args.data, data_type))
+            fw.write('Precision\tRecall\tF1\tExactMatch\n')
+            fw.write('{0:.5f}\t{1:.5f}\t{2:.5f}\t{3:.5f}\n'.format(precision * 100, recall * 100, f1 * 100, accuracy * 100))
 
     return {'total_precision': precision, 'total_recall': recall, 'total_f1': f1, 'total_exact_match': accuracy}
 
@@ -298,15 +304,29 @@ def prepare_inputs(data_type):
             offset_mapping = offset_mappings[idx * 2 + 1]
             vec = convert_to_word_embeddings(offset_mapping, input_id, hidden_output, tokenizer, False)
             s2_vecs.append(vec)
-    print('sents1', sents1[0])
-    print('sents2', sents2[0])
-    print('golds', golds[0])
+    # print('sents1', sents1[0])
+    # print('sents2', sents2[0])
+    # print('golds', golds[0])
     return s1_vecs, s2_vecs, sents1, sents2, golds
 
 
-def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path):
+def final_evaluation(accaligner, threshold, s1_vecs, s2_vecs, golds, sents1, sents2, data_type, final_result_path, log_per_sent=False):
     accaligner.compute_pre_thresh_alignment_matrixes(s1_vecs, s2_vecs)
     predictions = accaligner.get_alignments(threshold)
+
+    # if wants log data per sent, save in csv
+    if log_per_sent:
+        out_dir = args.out + 'log_per_sent/'
+        log_path = out_dir + 'final_log_per_sent.csv'
+        if not os.path.exists(out_dir):
+            os.makedirs(out_dir)
+            # create csv table
+            with open(log_path, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                headers = ['Null Ratio', 'Precision', 'Recall']
+                writer.writerow(headers)
+        log_total = evaluate_total_score(golds, predictions, sents1, sents2, data_type, log_path, log_per_sent=True)
+
     log = evaluate(golds, predictions, data_type, final_result_path)
     log_null = eval_null_alignments(golds, sents1, sents2, predictions, data_type, final_result_path)
     log_total = evaluate_total_score(golds, predictions, sents1, sents2, data_type, final_result_path)
@@ -327,7 +347,6 @@ if __name__ == '__main__':
 
     dev_s1_vecs, dev_s2_vecs, dev_sents1, dev_sents2, dev_golds = prepare_inputs('dev')
     test_s1_vecs, test_s2_vecs, test_sents1, test_sents2, test_golds = prepare_inputs('test')
-
 
     out_dir = args.out + '{0}_sure-possible-{1}/{2}/'.format(args.data,
                                                              args.sure_and_possible,
@@ -377,6 +396,6 @@ if __name__ == '__main__':
 
     accaligner = AccAligner(distortion, best_thresh, out_dir)
     final_evaluation(accaligner, best_thresh, dev_s1_vecs, dev_s2_vecs, dev_golds, dev_sents1, dev_sents2,
-                        'dev', dev_final_result_path)
+                        'dev', dev_final_result_path, log_per_sent=True)
     final_evaluation(accaligner, best_thresh, test_s1_vecs, test_s2_vecs, test_golds, test_sents1, test_sents2,
-                        'test', test_final_result_path)
+                        'test', test_final_result_path, log_per_sent=True)
